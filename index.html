@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عَقارك AI | اكتشف عقارك القادم</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial;background:#f6f5ef;color:#18352b}
+header{background:#10372b;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold;color:#e6c477}
+header a,.btn{color:white;text-decoration:none;background:#1e5944;padding:12px 18px;border-radius:9px}
+.hero{padding:75px 7%;background:linear-gradient(110deg,#102f25,#39745a);color:white}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.4;margin:8px 0}
+.hero p{font-size:18px;line-height:2;color:#e2e9e3}
+.search{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+input,select{padding:15px;border:0;border-radius:8px;font-size:15px;flex:1;min-width:140px}
+button{border:0;border-radius:8px;padding:14px 22px;background:#e4bf70;color:#18352b;font-weight:bold;cursor:pointer}
+main{padding:35px 6%}
+h2{font-size:29px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 5px 20px #0000000c}
+.card img{width:100%;height:190px;object-fit:cover}
+.info{padding:18px}
+.price{font-size:22px;font-weight:bold;color:#236345}
+.tag{color:#47775c;font-size:13px}
+footer{background:#10372b;color:white;padding:25px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">عَقارك AI</div>
+<a href="#properties">اكتشف العقارات</a>
+</header>
+<section class="hero">
+<p>منصة العقارات المصرية الذكية</p>
+<h1>عقارك القادم<br>يبدأ من هنا.</h1>
+<p>اكتشف الشقق والفلل والعقارات للبيع والإيجار، وابحث عن اختيارك المناسب بسهولة.</p>
+<div class="search">
+<select id="purpose"><option value="all">بيع أو إيجار</option><option value="بيع">للبيع</option><option value="إيجار">للإيجار</option></select>
+<select id="kind"><option value="all">كل العقارات</option><option>شقة</option><option>فيلا</option><option>دوبلكس</option></select>
+<input id="area" placeholder="اكتب المنطقة مثل القاهرة الجديدة">
+<button onclick="searchHomes()">ابحث الآن</button>
+</div>
+</section>
+<main id="properties">
+<h2>عقارات مختارة</h2>
+<p>هذه أمثلة تجريبية لتصميم الموقع وليست إعلانات عقارية موثقة.</p>
+<div class="cards" id="cards">
+<article class="card" data-kind="شقة" data-purpose="بيع" data-area="القاهرة الجديدة">
+<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="شقة عصرية">
+<div class="info"><span class="tag">للبيع · شقة</span><h3>شقة بتصميم عصري</h3><p>القاهرة الجديدة</p><div class="price">3,250,000 جنيه</div><p>165 م² · 3 غرف · 2 حمام</p></div>
+</article>
+<article class="card" data-kind="فيلا" data-purpose="بيع" data-area="الشيخ زايد">
+<img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="فيلا">
+<div class="info"><span class="tag">للبيع · فيلا</span><h3>فيلا بحديقة خاصة</h3><p>الشيخ زايد</p><div class="price">8,900,000 جنيه</div><p>320 م² · 4 غرف · 3 حمام</p></div>
+</article>
+<article class="card" data-kind="دوبلكس" data-purpose="إيجار" data-area="مدينة نصر">
+<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="دوبلكس">
+<div class="info"><span class="tag">للإيجار · دوبلكس</span><h3>دوبلكس واسع ومضيء</h3><p>مدينة نصر</p><div class="price">22,000 جنيه شهريًا</div><p>210 م² · 3 غرف · 2 حمام</p></div>
+</article>
+</div>
+<p id="empty" hidden>لا توجد نتائج مطابقة. جرّب تغيير البحث.</p>
+</main>
+<footer>© 2026 عَقارك AI — نموذج أولي قيد التطوير</footer>
+<script>
+function searchHomes(){
+const purpose=document.getElementById('purpose').value;
+const kind=document.getElementById('kind').value;
+const area=document.getElementById('area').value.trim().toLowerCase();
+let count=0;
+document.querySelectorAll('.card').forEach(card=>{
+const ok=(purpose==='all'||card.dataset.purpose===purpose)
+&&(kind==='all'||card.dataset.kind===kind)
+&&(!area||card.dataset.area.toLowerCase().includes(area));
+card.style.display=ok?'':'none';
+if(ok)count++;
+});
+document.getElementById('empty').hidden=count>0;
+}
+</script>
+</body>
+</html>
