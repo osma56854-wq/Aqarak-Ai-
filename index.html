@@ -1,82 +1,323 @@
+
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>عَقارك AI | اكتشف عقارك القادم</title>
+<meta name="theme-color" content="#12372d">
+<title>عَقارك AI | عقارك يبدأ من هنا</title>
 <style>
+:root{--g:#12372d;--g2:#286449;--gold:#e8c879;--bg:#f7f6f0}
 *{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial;background:#f6f5ef;color:#18352b}
-header{background:#10372b;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:27px;font-weight:bold;color:#e6c477}
-header a,.btn{color:white;text-decoration:none;background:#1e5944;padding:12px 18px;border-radius:9px}
-.hero{padding:75px 7%;background:linear-gradient(110deg,#102f25,#39745a);color:white}
-.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.4;margin:8px 0}
-.hero p{font-size:18px;line-height:2;color:#e2e9e3}
-.search{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-input,select{padding:15px;border:0;border-radius:8px;font-size:15px;flex:1;min-width:140px}
-button{border:0;border-radius:8px;padding:14px 22px;background:#e4bf70;color:#18352b;font-weight:bold;cursor:pointer}
-main{padding:35px 6%}
-h2{font-size:29px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 5px 20px #0000000c}
-.card img{width:100%;height:190px;object-fit:cover}
-.info{padding:18px}
-.price{font-size:22px;font-weight:bold;color:#236345}
-.tag{color:#47775c;font-size:13px}
-footer{background:#10372b;color:white;padding:25px;text-align:center}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:#20352b}
+a{text-decoration:none;color:inherit}
+header,footer{background:var(--g);color:white;padding:18px 5%}
+.wrap{max-width:1120px;margin:auto}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.logo{font-size:25px;font-weight:bold;color:var(--gold)}
+.navlinks{display:flex;gap:18px;font-size:14px}
+.navlinks a:hover{color:var(--gold)}
+.hero{padding:55px 5%;background:linear-gradient(125deg,#102b23,#39745a);color:white}
+.eyebrow{color:var(--gold);font-weight:bold}
+.hero h1{font-size:clamp(32px,6vw,55px);line-height:1.4;margin:12px 0}
+.hero p{line-height:1.9;color:#e6eee8}
+.search{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:10px;background:white;padding:15px;border-radius:14px;margin-top:25px}
+.field label,.tool label{display:block;font-size:12px;color:#68766e;margin-bottom:7px}
+input,select,textarea{width:100%;min-width:0;padding:12px;border:1px solid #dfe5de;border-radius:8px;background:white;font:inherit;color:#20352b}
+button{border:0;border-radius:9px;padding:12px 17px;background:var(--gold);color:var(--g);font:inherit;font-weight:bold;cursor:pointer}
+main{padding:35px 5%}
+h2{margin:0 0 10px}
+.muted{color:#6b776f;font-size:14px;line-height:1.8}
+.notice{background:#fff5d9;color:#6b5421;padding:13px;border-radius:9px;font-size:13px;line-height:1.8;margin:16px 0}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+.card,.tool{background:white;border:1px solid #e7ebe5;border-radius:15px;overflow:hidden;box-shadow:0 5px 18px #00000008}
+.card img{width:100%;height:190px;object-fit:cover;display:block}
+.info{padding:16px}
+.tag{font-size:12px;color:var(--g2);font-weight:bold}
+.info h3{margin:9px 0}
+.price{font-size:21px;color:var(--g2);font-weight:bold;margin:12px 0}
+.details{border-top:1px solid #edf0eb;padding-top:12px;font-size:13px;color:#65736a}
+.contact{display:block;text-align:center;background:var(--g);color:white;padding:11px;border-radius:8px;margin-top:14px}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:42px}
+.tool{padding:20px}
+.tool label{margin:13px 0 6px}
+.tool button{margin-top:14px}
+.result{background:#edf5ed;padding:13px;border-radius:9px;line-height:1.9;margin-top:14px}
+textarea{min-height:110px}
+.small{font-size:12px;color:#778178;line-height:1.8}
+footer{text-align:center;margin-top:25px}
+[hidden]{display:none!important}
+@media(max-width:800px){
+.search{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tools{grid-template-columns:1fr}
+}
+@media(max-width:540px){
+.search,.cards{grid-template-columns:1fr}
+.hero{padding:38px 5%}
+.navlinks{gap:9px;font-size:12px}
+.logo{font-size:21px}
+}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">عَقارك AI</div>
-<a href="#properties">اكتشف العقارات</a>
+<div class="nav wrap">
+<a class="logo" href="#">عَقارك AI</a>
+<nav class="navlinks">
+<a href="#properties">العقارات</a>
+<a href="#finance">حاسبة القسط</a>
+<a href="#add">اعرض عقارك</a>
+</nav>
+</div>
 </header>
+
 <section class="hero">
-<p>منصة العقارات المصرية الذكية</p>
-<h1>عقارك القادم<br>يبدأ من هنا.</h1>
-<p>اكتشف الشقق والفلل والعقارات للبيع والإيجار، وابحث عن اختيارك المناسب بسهولة.</p>
+<div class="wrap">
+<span class="eyebrow">منصة العقارات المصرية الذكية</span>
+<h1>مش مجرد بحث عن عقار…<br>دي بداية قرار أذكى.</h1>
+<p>ابحث عن عقارك حسب احتياجاتك، قارن الخيارات، واحسب قسطًا تقديريًا قبل اتخاذ قرارك.</p>
+
 <div class="search">
-<select id="purpose"><option value="all">بيع أو إيجار</option><option value="بيع">للبيع</option><option value="إيجار">للإيجار</option></select>
-<select id="kind"><option value="all">كل العقارات</option><option>شقة</option><option>فيلا</option><option>دوبلكس</option></select>
-<input id="area" placeholder="اكتب المنطقة مثل القاهرة الجديدة">
+<div class="field">
+<label for="purpose">نوع المعاملة</label>
+<select id="purpose">
+<option value="all">بيع أو إيجار</option>
+<option value="بيع">للبيع</option>
+<option value="إيجار">للإيجار</option>
+</select>
+</div>
+<div class="field">
+<label for="kind">نوع العقار</label>
+<select id="kind">
+<option value="all">كل الأنواع</option>
+<option>شقة</option>
+<option>فيلا</option>
+<option>دوبلكس</option>
+</select>
+</div>
+<div class="field">
+<label for="area">المنطقة</label>
+<input id="area" placeholder="مثال: مدينة نصر">
+</div>
+<div class="field">
+<label for="budget">أقصى سعر بالجنيه</label>
+<input id="budget" type="number" min="0" placeholder="مثال: 3000000">
+</div>
 <button onclick="searchHomes()">ابحث الآن</button>
 </div>
+</div>
 </section>
-<main id="properties">
+
+<main class="wrap">
+<section id="properties">
 <h2>عقارات مختارة</h2>
-<p>هذه أمثلة تجريبية لتصميم الموقع وليست إعلانات عقارية موثقة.</p>
+<p class="muted">استخدم البحث لتصفية العقارات حسب المنطقة والسعر والنوع.</p>
+<div class="notice">
+تنبيه: الإعلانات والأسعار والصور التالية تجريبية لتوضيح الموقع، وليست عقارات حقيقية موثّقة.
+</div>
+<p id="count" class="muted">3 نتائج تجريبية</p>
+
 <div class="cards" id="cards">
-<article class="card" data-kind="شقة" data-purpose="بيع" data-area="القاهرة الجديدة">
-<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="شقة عصرية">
-<div class="info"><span class="tag">للبيع · شقة</span><h3>شقة بتصميم عصري</h3><p>القاهرة الجديدة</p><div class="price">3,250,000 جنيه</div><p>165 م² · 3 غرف · 2 حمام</p></div>
+<article class="card" data-kind="شقة" data-purpose="بيع" data-area="القاهرة الجديدة" data-price="3250000">
+<img loading="lazy" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="صورة توضيحية لشقة عصرية">
+<div class="info">
+<span class="tag">مثال تجريبي · للبيع · شقة</span>
+<h3>شقة بتصميم عصري</h3>
+<p>📍 القاهرة الجديدة</p>
+<div class="price">3,250,000 جنيه</div>
+<div class="details">165 م² · 3 غرف · 2 حمام</div>
+<a class="contact" href="#add">اعرض عقارك المشابه</a>
+</div>
 </article>
-<article class="card" data-kind="فيلا" data-purpose="بيع" data-area="الشيخ زايد">
-<img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="فيلا">
-<div class="info"><span class="tag">للبيع · فيلا</span><h3>فيلا بحديقة خاصة</h3><p>الشيخ زايد</p><div class="price">8,900,000 جنيه</div><p>320 م² · 4 غرف · 3 حمام</p></div>
+
+<article class="card" data-kind="فيلا" data-purpose="بيع" data-area="الشيخ زايد" data-price="8900000">
+<img loading="lazy" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="صورة توضيحية لفيلا">
+<div class="info">
+<span class="tag">مثال تجريبي · للبيع · فيلا</span>
+<h3>فيلا بحديقة خاصة</h3>
+<p>📍 الشيخ زايد</p>
+<div class="price">8,900,000 جنيه</div>
+<div class="details">320 م² · 4 غرف · 3 حمام</div>
+<a class="contact" href="#add">اعرض عقارك المشابه</a>
+</div>
 </article>
-<article class="card" data-kind="دوبلكس" data-purpose="إيجار" data-area="مدينة نصر">
-<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="دوبلكس">
-<div class="info"><span class="tag">للإيجار · دوبلكس</span><h3>دوبلكس واسع ومضيء</h3><p>مدينة نصر</p><div class="price">22,000 جنيه شهريًا</div><p>210 م² · 3 غرف · 2 حمام</p></div>
+
+<article class="card" data-kind="دوبلكس" data-purpose="إيجار" data-area="مدينة نصر" data-price="22000">
+<img loading="lazy" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="صورة توضيحية لدوبلكس">
+<div class="info">
+<span class="tag">مثال تجريبي · للإيجار · دوبلكس</span>
+<h3>دوبلكس واسع ومضيء</h3>
+<p>📍 مدينة نصر</p>
+<div class="price">22,000 جنيه شهريًا</div>
+<div class="details">210 م² · 3 غرف · 2 حمام</div>
+<a class="contact" href="#add">اعرض عقارك المشابه</a>
+</div>
 </article>
 </div>
-<p id="empty" hidden>لا توجد نتائج مطابقة. جرّب تغيير البحث.</p>
+<p id="empty" class="muted" hidden>لا توجد نتائج مطابقة. جرّب تغيير البحث.</p>
+</section>
+
+<section class="tools" id="finance">
+<div class="tool">
+<h2>حاسبة القسط التقديري</h2>
+<p class="muted">تقدير تقريبي للتخطيط، وليس عرض تمويل من بنك.</p>
+
+<label for="homeprice">سعر العقار بالجنيه</label>
+<input id="homeprice" type="number" min="1" value="2000000">
+
+<label for="down">المقدم بالجنيه</label>
+<input id="down" type="number" min="0" value="400000">
+
+<label for="rate">الفائدة السنوية %</label>
+<input id="rate" type="number" min="0" max="100" step="0.1" value="15">
+
+<label for="years">مدة التمويل</label>
+<select id="years">
+<option value="5">5 سنوات</option>
+<option value="10" selected>10 سنوات</option>
+<option value="15">15 سنة</option>
+<option value="20">20 سنة</option>
+<option value="25">25 سنة</option>
+</select>
+
+<button onclick="calculate()">احسب القسط</button>
+<div class="result" id="calcresult" aria-live="polite">القسط الشهري التقريبي سيظهر هنا.</div>
+<p class="small">الحسبة لا تشمل الرسوم أو التأمين، وقد تختلف طريقة حساب البنك وشروط التمويل الفعلية.</p>
+</div>
+
+<div class="tool" id="add">
+<h2>جهّز إعلان عقارك</h2>
+<p class="muted">أدخل بيانات عقارك لتجهيز نص إعلاني يمكنك نسخه. هذا النموذج لا ينشر الإعلان على الإنترنت.</p>
+
+<label for="adtype">نوع المعاملة</label>
+<select id="adtype">
+<option>للبيع</option>
+<option>للإيجار</option>
+</select>
+
+<label for="adkind">نوع العقار</label>
+<select id="adkind">
+<option>شقة</option>
+<option>فيلا</option>
+<option>دوبلكس</option>
+<option>محل تجاري</option>
+<option>أرض</option>
+</select>
+
+<label for="adarea">المنطقة</label>
+<input id="adarea" placeholder="اكتب اسم المنطقة">
+
+<label for="adprice">السعر بالجنيه</label>
+<input id="adprice" type="number" min="1" placeholder="اكتب السعر">
+
+<label for="adphone">رقم التواصل (اختياري)</label>
+<input id="adphone" inputmode="tel" placeholder="رقم الموبايل">
+
+<button onclick="makeAd()">جهّز نص الإعلان</button>
+
+<div class="result" id="adresult" hidden>
+<textarea id="adtext" readonly></textarea>
+<button onclick="copyAd()">انسخ نص الإعلان</button>
+<p id="copymsg" class="small"></p>
+</div>
+</div>
+</section>
 </main>
-<footer>© 2026 عَقارك AI — نموذج أولي قيد التطوير</footer>
+
+<footer>
+<div class="logo">عَقارك AI</div>
+<p>بحث أوضح. قرار أذكى. بداية أقرب لعقارك.</p>
+<p class="small">نسخة تجريبية. استقبال إعلانات حقيقية يتطلب قاعدة بيانات ونظامًا آمنًا لإدارة المستخدمين والعقارات.</p>
+</footer>
+
 <script>
 function searchHomes(){
 const purpose=document.getElementById('purpose').value;
 const kind=document.getElementById('kind').value;
 const area=document.getElementById('area').value.trim().toLowerCase();
+const budgetInput=document.getElementById('budget').value;
+const budget=budgetInput===''?Infinity:Number(budgetInput);
 let count=0;
+
 document.querySelectorAll('.card').forEach(card=>{
-const ok=(purpose==='all'||card.dataset.purpose===purpose)
-&&(kind==='all'||card.dataset.kind===kind)
-&&(!area||card.dataset.area.toLowerCase().includes(area));
-card.style.display=ok?'':'none';
-if(ok)count++;
+const matches=
+(purpose==='all'||card.dataset.purpose===purpose)&&
+(kind==='all'||card.dataset.kind===kind)&&
+card.dataset.area.toLowerCase().includes(area)&&
+Number(card.dataset.price)<=budget;
+
+card.hidden=!matches;
+if(matches)count++;
 });
-document.getElementById('empty').hidden=count>0;
+
+document.getElementById('count').textContent=count+' نتيجة';
+document.getElementById('empty').hidden=count!==0;
+}
+
+function calculate(){
+const price=Number(document.getElementById('homeprice').value);
+const down=Number(document.getElementById('down').value);
+const annual=Number(document.getElementById('rate').value);
+const months=Number(document.getElementById('years').value)*12;
+const out=document.getElementById('calcresult');
+
+if(!Number.isFinite(price)||!Number.isFinite(down)||!Number.isFinite(annual)||
+price<=0||down<0||down>=price||annual<0||annual>100){
+out.textContent='راجع البيانات: يجب أن يكون السعر أكبر من المقدم والفائدة بين 0 و100%.';
+return;
+}
+
+const loan=price-down;
+const monthlyRate=annual/1200;
+const payment=monthlyRate===0?loan/months:
+loan*monthlyRate*Math.pow(1+monthlyRate,months)/
+(Math.pow(1+monthlyRate,months)-1);
+
+out.textContent='مبلغ التمويل: '+Math.round(loan).toLocaleString('ar-EG')+
+' جنيه. القسط الشهري التقريبي: '+
+Math.round(payment).toLocaleString('ar-EG')+' جنيه.';
+}
+
+function makeAd(){
+const area=document.getElementById('adarea').value.trim();
+const price=Number(document.getElementById('adprice').value);
+if(!area||!Number.isFinite(price)||price<=0){
+alert('اكتب المنطقة والسعر الصحيح أولًا.');
+return;
+}
+
+const type=document.getElementById('adtype').value;
+const kind=document.getElementById('adkind').value;
+const phone=document.getElementById('adphone').value.trim();
+
+let text='إعلان عقاري '+type+
+'\nنوع العقار: '+kind+
+'\nالمنطقة: '+area+
+'\nالسعر: '+price.toLocaleString('ar-EG')+' جنيه';
+
+if(phone)text+='\nللتواصل: '+phone;
+text+='\nللاستفسار ومعرفة التفاصيل، يُرجى التواصل مع المعلن.';
+
+document.getElementById('adtext').value=text;
+document.getElementById('adresult').hidden=false;
+document.getElementById('copymsg').textContent='';
+}
+
+async function copyAd(){
+const field=document.getElementById('adtext');
+const msg=document.getElementById('copymsg');
+
+try{
+await navigator.clipboard.writeText(field.value);
+msg.textContent='تم نسخ النص.';
+}catch(error){
+field.focus();
+field.select();
+msg.textContent='النص محدد؛ اضغط نسخ من قائمة الهاتف.';
+}
 }
 </script>
 </body>
